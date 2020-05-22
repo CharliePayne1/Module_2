@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_number: 1
+  sort_code: 1
+  type_of_account: MyString
+  funds: 1
+  overdraft: 1
+  customer_id: 1
+
+two:
+  account_number: 1
+  sort_code: 1
+  type_of_account: MyString
+  funds: 1
+  overdraft: 1
+  customer_id: 1
