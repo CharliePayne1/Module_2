@@ -27,7 +27,7 @@ end
     BankAccount.create({
     account_number: Faker::Number.between(from: 10000000, to: 99999999),
     sort_code: Faker::Number.between(from: 100000, to: 999999),
-    type_of_account: ['current', 'saving', 'saving'].sample,
+    type_of_account: ['current', 'saving', 'foreign'].sample,
     funds: Faker::Number.between(from: 0, to: 10000),
     overdraft: [2000, 1500, 1000, 750, 500, 250, 0].sample,
     customer_id: Customer.all.sample.id
@@ -37,7 +37,7 @@ end
 100.times do
     Receipt.create({
         total_amount: Faker::Number.between(from: 3, to: 10000),
-        items: ['shoes', 'handbag', 'mobile', 'groceries', 'bedsit', 'lava lamp', 'home exercise kit', 'banana bread', 'Tiger King DVD', 'Oyster Card'].sample(3).join(", ")
+        items: ['shoes', 'handbag', 'mobile', 'groceries', 'bedsit', 'lava lamp', 'home exercise kit', 'banana bread', 'Tiger King DVD', 'Oyster Card'].sample(3).join(", "),
         bank_account_id: BankAccount.all.sample.id,
         retailer_id: Retailer.all.sample.id
     })

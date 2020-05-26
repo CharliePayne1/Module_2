@@ -1,7 +1,7 @@
 <h1>All Retailer Sectors</h1>
 <br>
 <% @retailers.each do |retailer| %>
-<h2>Retailer No. : <%= link_to retailer.id, retailer %></h2>
+<h2><%= link_to retailer.name, retailer %></h2>
 <br>
 <ul>
 <li>Sector: <%= retailer.sector %></li>
