@@ -1,6 +1,7 @@
 class Retailer < ApplicationRecord
     has_many :receipts
     has_many :bank_accounts, through: :receipts
+    has_many :customers, through: :bank_accounts
 
     validates :sector, presence: true 
     validates :annual_turnover, presence: true 

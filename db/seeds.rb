@@ -37,7 +37,7 @@ end
 100.times do
     Receipt.create({
         total_amount: Faker::Number.between(from: 3, to: 10000),
-        items: ['shoes', 'handbag', 'mobile', 'groceries', 'bedsit', 'lava lamp', 'home exercise kit', 'banana bread', 'Tiger King DVD', 'Oyster Card'].sample,
+        items: ['shoes', 'handbag', 'mobile', 'groceries', 'bedsit', 'lava lamp', 'home exercise kit', 'banana bread', 'Tiger King DVD', 'Oyster Card'].sample(3).join(", ")
         bank_account_id: BankAccount.all.sample.id,
         retailer_id: Retailer.all.sample.id
     })
