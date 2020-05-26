@@ -12,6 +12,7 @@ class BankAccount < ApplicationRecord
     def load_defaults
        if self.new_record? # Returns true if this object hasn’t been saved yet — that is, a record for the object doesn’t exist yet; otherwise, returns false
         self.funds = 0.00
+        end
     end 
 
 end

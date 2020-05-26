@@ -6,6 +6,7 @@ class RetailersController < ApplicationController
     end
 
     def show
+        @receipt = Receipt.new
     end
 
     def edit
