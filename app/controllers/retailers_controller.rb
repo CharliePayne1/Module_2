@@ -1,18 +1,17 @@
 class RetailersController < ApplicationController
+    before_action :set_retailer, only: [:show, :edit, :update]
+
     def index
         @retailers = Retailer.all
     end
 
     def show
-        @retailer = Retailer.find(params[:id])
     end
 
     def edit
-        @retailer = Retailer.find(params[:id])
     end
 
     def update
-        @retailer = Retailer.find(params[:id])
         @retailer.update(retailer_params)
             if @retailer.valid?
             redirect_to @retailer
@@ -26,5 +25,10 @@ class RetailersController < ApplicationController
     def retailer_params
         params.require(:retailer).permit!
     end
+
+
+    def set_retailer
+        @retailer = Retailer.find(params[:id])
+    end 
 
 end
