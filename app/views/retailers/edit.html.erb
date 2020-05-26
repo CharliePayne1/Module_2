@@ -1,0 +1,30 @@
+<h1>Edit Details</h1>
+
+<ul>
+    <% if @retailer.errors.any? %>
+            <% @retailer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+    <% end %>
+</ul>
+
+<%= form_for @retailer do |f| %>
+
+<%= f.label :sector %>
+<%= f.text_field :sector %>
+<br>
+<br>
+<%= f.label :annual_turnover %>
+<%= f.text_field :annual_turnover %>
+<br>
+<br>
+<%= f.label :established %>
+<%= f.text_field :established %>
+<br>
+<br>
+<%= f.label :employees %>
+<%= f.text_field :employees %>
+<br>
+<br>
+<%= f.submit %>
+<%end%>
