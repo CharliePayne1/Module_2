@@ -8,21 +8,16 @@ class RetailersController < ApplicationController
     def show
     end
 
-    def new
-        @retailer = Retailer.new
-    end
-
-    def create
-        @retailer = Retailer.create(retailer_params)
-        redirect_to @retailer
-    end
-
     def edit
     end
 
     def update
         @retailer.update(retailer_params)
-        redirect_to @retailer
+            if @retailer.valid?
+            redirect_to @retailer
+            else 
+            render :edit
+        end
     end
 
     private 
@@ -31,7 +26,9 @@ class RetailersController < ApplicationController
         params.require(:retailer).permit!
     end
 
+
     def set_retailer
         @retailer = Retailer.find(params[:id])
     end 
+
 end

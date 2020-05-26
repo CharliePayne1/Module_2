@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
     has_many :bank_accounts
+    has_many :retailers, through: :bank_accounts
 
     attr_accessor :occupation
     
@@ -17,5 +18,5 @@ class Customer < ApplicationRecord
     def full_name 
         "#{last_name}, #{first_name}" 
     end 
-        
+
 end
