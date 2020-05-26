@@ -14,7 +14,7 @@ class ReceiptsController < ApplicationController
 
     def create
         @receipt = Receipt.create(receipt_params)
-        redirect_to @receipt
+        redirect_to @receipt.retailer
     end
 
     def edit
