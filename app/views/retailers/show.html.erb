@@ -1,0 +1,33 @@
+<h1>Retailer No: <%= @retailer.id %></h1>
+Established in <%= @retailer.established %>
+<br>
+<br>
+<h2>Company Overview:</h2>
+<ul>
+<br>
+<li>Sector: <%= @retailer.sector %></li>
+<br>
+<li>Annual Turnover: £<%= @retailer.annual_turnover.round(2) %></li>
+<br>
+<li>No. of employees: <%= @retailer.employees %></li>
+</ul>
+<br>
+<h2>Recent Transactions</h2>
+<% @retailer.most_recent.each do |receipt| %>
+Transaction Id: <%= receipt.id %>
+<ul>
+<li>Value: £<%= receipt.total_amount.round(2) %></li>
+<li>Time: <%= receipt.created_at %></li>
+<li>Items purchased: <%= receipt.items %></li>
+</ul>
+<br>
+<%end%>
+
+<h3>Analytics</h3>
+<ul>
+<li>% annual turnover from most recent receipts: <strong><%= @retailer.annual_turnover_from_recent_receipts %>%</strong>
+<li>% annual turnover coming from all receipts in this app: <strong><%= @retailer.annual_turnover_from_receipts %>%</strong>
+</ul>
+
+<%= button_to 'Edit Retailer', edit_retailer_path, method: :get %>
+
