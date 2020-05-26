@@ -5,14 +5,17 @@ Customer.destroy_all
 
 30.times do
     Customer.create({
-        name: Faker::Name.name,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
         age: (16..100).to_a.sample,
+        # dob: faker::dateTimeBetween('1930-01-01', '2003-12-31')
         occupation: Faker::Company.profession
     })
 end
 
 20.times do
     Retailer.create({
+     name: Faker::Company.name,
      sector: Faker::Job.field,
      annual_turnover: Faker::Number.between(from: 20000, to: 1100000),
      established: Faker::Number.between(from: 1930, to: 2020),
