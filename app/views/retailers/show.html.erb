@@ -12,16 +12,29 @@
 </ul>
 <%= button_to 'Edit Retailer', edit_retailer_path, method: :get %>
 <br>
+
 <h3>Recent Transactions</h3>
-<% @retailer.most_recent.each do |receipt| %>
-Transaction Id: <%= receipt.id %>
-<ul>
-<li>Value: £<%= receipt.total_amount.round(2) %></li>
-<li>Time: <%= receipt.created_at %></li>
-<li>Items purchased: <%= receipt.items %></li>
-</ul>
-<br>
-<%end%>
+<table>
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+                <th>Value</th>
+              <th>Time</th>
+              <th>Items Purchased</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @retailer.most_recent.each do |receipt| %>
+          <tr>
+            <td><%= receipt.id %></td>
+            <td> £<%= receipt.total_amount.round(2) %></td>
+            <td><%= receipt.created_at %></td>
+            <td><%= receipt.items %></td><br>
+            <% end %>
+          </tr>
+        </tbody>
+</table>
 
 <h3>Analytics</h3>
 <ul>
@@ -48,5 +61,4 @@ Transaction Id: <%= receipt.id %>
 <br>
 <%= f.submit %>
 <%end%>
-
 
