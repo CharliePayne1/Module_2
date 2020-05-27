@@ -28,8 +28,6 @@ class CustomersController < ApplicationController
         end 
     end 
 
-    end
-
     private 
 
     def customer_params
