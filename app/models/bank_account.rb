@@ -7,13 +7,13 @@ class BankAccount < ApplicationRecord
     validates :account_number, presence: true, uniqueness: true 
     validates :funds, presence: true, numericality: true 
 
-    before_validation :load_defaults 
+    # before_validation :load_defaults 
         
-    def load_defaults
-       if self.new_record? # Returns true if this object hasn’t been saved yet — that is, a record for the object doesn’t exist yet; otherwise, returns false
-        self.funds = 0.00
-        end
-    end 
+    # def load_defaults
+    #    if self.new_record? # Returns true if this object hasn’t been saved yet — that is, a record for the object doesn’t exist yet; otherwise, returns false
+    #     self.funds = 0.00
+    #     end
+    # end 
 
     def customer_first_name
         self.customer.first_name
@@ -26,6 +26,12 @@ class BankAccount < ApplicationRecord
     def recent_transactions
         self.receipts.max_by(3) {|receipt| receipt.created_at}
     end
+
+    def available_funds
+        @available = self.funds + self.overdraft
+        @available
+    end
+
 end
 
 # Show page 
