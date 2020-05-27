@@ -11,8 +11,8 @@ class Customer < ApplicationRecord
     before_save :uppercase_name
     
     def uppercase_name
-        self.first_name = self.first_name.uppercase
-        self.last_name = self.last_name.uppercase
+        self.first_name = self.first_name.upcase
+        self.last_name = self.last_name.upcase
     end 
     
     def full_name 

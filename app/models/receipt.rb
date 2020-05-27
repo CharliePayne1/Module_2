@@ -9,14 +9,6 @@ class Receipt < ApplicationRecord
     # include transaction_type?
     # validates :transaction_type, presence: true, inclusion: { in: TRANSACTION_TYPES }
     # should you add a transaction number, with presence true, uniqueness true
-  
-    def customer_first_name
-        self.bank_account.customer.first_name
-    end
-
-    def customer_last_name
-        self.bank_account.customer.last_name 
-    end
 
     def retailer_name
         self.retailer.name 
