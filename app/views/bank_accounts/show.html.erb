@@ -1,17 +1,26 @@
-<h1> A Bank Account </h1>
+<%= button_to "Back", @bank_account.customer, method: :get %>
+<h4> <%= @bank_account.account_number %> | <%= @bank_account.sort_code %> </h4>  
+<h5>Available Funds: £<%= @bank_account.available_funds %><br>
+Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5>
+<br>
+<h5> Recent Transactions:</h5>
+  <% @bank_account.recent_transactions.each do |receipt| %><br>
+  <ul>
+  <li>Transacton ID: <%= receipt.id %></li>
+           <li>Value: £<%= receipt.total_amount.round(2) %></li>
+            <li>Date Posted: <%= receipt.created_at %></li>
+            <li>Items: <%= receipt.items %></li>
+            <% end %></ul>
 
- <h2> <%= link_to "#{ @bank_account.customer_first_name + ' ' + @bank_account.customer_last_name}" , bank_account_path(@bank_account.customer_id:)  %> account </h2> 
-  
-<h3> Sort Code: <%= @bank_account.sort_code %> </h3>
+  <br>
+  <br>
+  <h5> Change Overdraft Limit</h5>
+  <%= form_for @bank_account do |f| %>
+  <%= f.label :overdraft %>
+ 
+  <%= f.select :overdraft, options_for_select((0..2000).step(250)), {:style=>'display: block;'} %>
 
-<h3> Account Number: <%= @bank_account.account_number%> </h3>
-
- <h3> Available funds: £  <%= @bank_account.funds %> </h3>
-
- <h3> Overdraft: £ <%= @bank_account.overdraft %> </h3>
-
-<h3> Recent Transactions: 
-  <% @bank_account.recent_transactions.each do |receipt| %>
-  <%= receipt %> 
-  <% end %>
-</h3>
+  <br>
+  <br>
+  <%= f.submit %>
+  <%end%>
