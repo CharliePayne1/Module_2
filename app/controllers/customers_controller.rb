@@ -20,8 +20,14 @@ class CustomersController < ApplicationController
     end
 
     def update
-        @customer.update(customer_params)
-        redirect_to @customer
+        if @customer.update(customer_params)
+        flash[:notice] = "You have successfully updated your account."
+            redirect_to @customer
+        else 
+            render 'edit'
+        end 
+    end 
+
     end
 
     private 

@@ -1,7 +1,17 @@
-<h1> My Accounts </h1>
 
-<h2><%= @customer.full_name %></h2><br>
+<body>
+    <div class="container">
+        <h1 class="center-align"> My Accounts </h1>
+        <h2><%= @customer.full_name %></h2><br>
+        <div class="col s6 offset-s4"><span class="flow-text"><%= @customer.my_funds %></span></div>
+    </div>
+  </body>
 
-<%= link_to @customer.account_types %>
+    <%= link_to '<i class="material-icons right">create</i>Edit Profile'.html_safe, edit_customer_path(@customer), class="waves-effect waves-light btn" %>
+
+
+        
+
+
 
 

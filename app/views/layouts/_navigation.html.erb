@@ -1,0 +1,33 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<header>
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper #01579b light-blue darken-4">
+    <a href="#!" class="brand-logo">CDM Bank</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="sass.html">Log in</a></li>
+      <li><a href="badges.html">Register</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Register<i class="material-icons right"></i></a></li>
+    </ul>
+  </div>
+</nav>
+<% flash.each do |key, msg| %>
+<div class="container">
+    <div class="row padding-form">
+        <div class="col s12 m12 l12">
+            <div class="card-panel red lighten-1" id="fade-out-target">
+            <span class="white-text">
+            <%= msg %>
+            </span>
+            </div>
+            </div>
+            <div>
+            </div>
+    <% end %>
+</header>
