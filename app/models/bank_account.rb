@@ -26,6 +26,12 @@ class BankAccount < ApplicationRecord
     def recent_transactions
         self.receipts.max_by(3) {|receipt| receipt.created_at}
     end
+
+    def available_funds
+        @available = self.funds + self.overdraft
+        @available
+    end
+
 end
 
 # Show page 
