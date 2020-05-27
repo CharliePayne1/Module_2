@@ -1,0 +1,52 @@
+<h1><%= @retailer.name %></h1>
+<h3>Company Overview:</h3>
+<ul>
+<br>
+<li>Established in <%= @retailer.established %></li>
+<br>
+<li>Sector: <%= @retailer.sector %></li>
+<br>
+<li>Annual Turnover: £<%= @retailer.annual_turnover.round(2) %></li>
+<br>
+<li>No. of employees: <%= @retailer.employees %></li>
+</ul>
+<%= button_to 'Edit Retailer', edit_retailer_path, method: :get %>
+<br>
+<h3>Recent Transactions</h3>
+<% @retailer.most_recent.each do |receipt| %>
+Transaction Id: <%= receipt.id %>
+<ul>
+<li>Value: £<%= receipt.total_amount.round(2) %></li>
+<li>Time: <%= receipt.created_at %></li>
+<li>Items purchased: <%= receipt.items %></li>
+</ul>
+<br>
+<%end%>
+
+<h3>Analytics</h3>
+<ul>
+<li>% annual turnover from most recent receipts: <strong><%= @retailer.annual_turnover_from_recent_receipts %>%</strong>
+<li>% annual turnover coming from all receipts in this app: <strong><%= @retailer.annual_turnover_from_receipts %>%</strong>
+</ul>
+<br>
+<h4> Log New Transaction for <%= @retailer.name %> </h4>
+<%= form_with model: Receipt.new do |f| %>
+<%= f.label :total_amount %>
+<%= f.number_field :total_amount %>
+<br>
+<br>
+<%= f.label :items %>
+<%= f.text_field :items %>
+<br>
+<br>
+<%= f.label :account_number %>
+<%= f.collection_select(:bank_account_id, BankAccount.all, :id, :account_number) %>
+<br>
+<br>
+<%= f.hidden_field :retailer_id, value: @retailer.id %>
+<br>
+<br>
+<%= f.submit %>
+<%end%>
+
+

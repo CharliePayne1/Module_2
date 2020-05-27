@@ -1,10 +1,10 @@
 class BankAccountsController < ApplicationController
+    before_action :set_bank_account, only: [:show, :edit, :update]
     def index
         @bank_accounts = BankAccount.all
     end
 
     def show
-        @bank_account = BankAccount.find(params[:id])
     end
 
     def new
@@ -17,11 +17,9 @@ class BankAccountsController < ApplicationController
     end
 
     def edit
-        @bank_account = BankAccount.find(params[:id])
     end
 
     def update
-        @bank_account = BankAccount.find(params[:id])
         @bank_account.update(bank_account_params)
         redirect_to @bank_account
     end
@@ -31,4 +29,8 @@ class BankAccountsController < ApplicationController
     def bank_account_params
         params.require(:bank_account).permit!
     end
+
+    def set_bank_account 
+        @bank_account = BankAccount.find(params[:id])
+    end 
 end
