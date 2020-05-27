@@ -15,13 +15,13 @@ class Retailer < ApplicationRecord
     def annual_turnover_from_receipts
         @revenue_from_receipts = self.receipts.sum {|receipt| receipt.total_amount}.to_f
         @percentage = @revenue_from_receipts / self.annual_turnover
-        @percentage.round(2)
+        @percentage.round(3)
     end
 
     def annual_turnover_from_recent_receipts
         @revenue_from_most_recent = self.most_recent.sum {|receipt| receipt.total_amount}.to_f
         @percentage = @revenue_from_most_recent / self.annual_turnover
-        @percentage.round(2)
+        @percentage.round(3)
     end
 
 end

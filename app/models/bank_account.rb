@@ -15,4 +15,28 @@ class BankAccount < ApplicationRecord
         end
     end 
 
+    def customer_first_name
+        self.customer.first_name
+    end
+
+    def customer_last_name
+        self.customer.last_name 
+    end
+
+    def recent_transactions
+        self.receipts.max_by(3) {|receipt| receipt.created_at}
+    end
 end
+
+# Show page 
+# available_funds - funds + overdraft
+# big_spender customer occupation with highest available funds
+# Delete the bank account 
+# View your 10 most recent transactions link to most recent receipts 
+# Where have they spent the most money?
+# Average transaction value
+# Average basket size 
+# Link to customer profile 
+# Edit the overdraft (increasing) & available funds by paying money in/ withdrawing money 
+# Overdraft can only increase
+# Available funds can increase/decrease 
