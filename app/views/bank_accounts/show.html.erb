@@ -1,48 +1,35 @@
 
- <h2> <%= link_to @bank_account.customer.full_name, customer_path(@bank_account.customer)  %>  <%= @bank_account.type_of_account %> account </h2> 
-  
-<h3> Sort Code: <%= @bank_account.sort_code %> </h3> 
+ <h2> <%= link_to @bank_account.customer.full_name, customer_path(@bank_account.customer)  %> <br> 
+ <%= @bank_account.type_of_account %> account </h2> 
 
-<h3> Account Number: <%= @bank_account.account_number%> </h3>  
+<h5> Account Number: <%= @bank_account.account_number %> | Sort Code: <%= @bank_account.sort_code %> <br>
 
- <h3> Available funds: £  <%= @bank_account.funds %> </h3> 
+Available Funds: £<%= @bank_account.available_funds %><br>
 
- <h3> Overdraft: £ <%= @bank_account.overdraft %> </h3> 
+Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5> <br>
 
  <h2> Transactions Overview </h2> 
 
- <ul>
-
+<h6> <ul>
  <li> Maximum spend: £ <%= @bank_account.retailer_spent_most_with.total_amount %> at <%= link_to @bank_account.retailer_spent_most_with.retailer.name, receipt_path(@bank_account.retailer_spent_most_with.id) %>  </li> 
 
  <li> Average Transactions: £ <%= @bank_account.avrg_transaction %> </li> 
 
- <li> Recent Transactions: <br>
-  <% @bank_account.recent_transactions.each do |receipt| %>
-  <%= link_to receipt.retailer.name, receipt_path(receipt) %> <br>
-  <% end %>
- </li> 
+ </ul> </h6> 
 
- </ul>
-
-     <%= button_to "Delete Account", @bank_account, method: :delete %>
-
-
-<%= button_to "Back", @bank_account.customer, method: :get %>
-<h4> <%= @bank_account.account_number %> | <%= @bank_account.sort_code %> </h4>  
-<h5>Available Funds: £<%= @bank_account.available_funds %><br>
-Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5>
-<br>
 <h5> Recent Transactions:</h5>
   <% @bank_account.recent_transactions.each do |receipt| %><br>
   <ul>
   <li>Transacton ID: <%= receipt.id %></li>
+  <li> <%= link_to receipt.retailer.name, receipt_path(receipt) %> </li>
            <li>Value: £<%= receipt.total_amount.round(2) %></li>
             <li>Date Posted: <%= receipt.created_at %></li>
             <li>Items: <%= receipt.items %></li>
             <% end %></ul>
 
   <br>
+  <%= button_to "Delete Account", @bank_account, method: :delete %>
+  <%= button_to "Back", @bank_account.customer, method: :get %>
   <br>
   <h5> Change Overdraft Limit</h5>
   <%= form_for @bank_account do |f| %>
