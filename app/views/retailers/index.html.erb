@@ -1,0 +1,13 @@
+<h1>All Retailers</h1>
+<br>
+<% @retailers.each do |retailer| %>
+<h2><%= link_to retailer.name, retailer %></h2>
+<br>
+<ul>
+<li>Sector: <%= retailer.sector %></li>
+<br>
+<li>Annual Turnover: £<%= retailer.annual_turnover %></li>
+</ul>
+<br>
+<br>
+<%end%>

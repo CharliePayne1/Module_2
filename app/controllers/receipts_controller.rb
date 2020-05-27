@@ -1,10 +1,11 @@
 class ReceiptsController < ApplicationController
+    before_action :set_receipt, only: [:show, :edit, :update]
+
     def index
         @receipts = Receipt.all
     end
 
     def show
-        @receipt = Receipt.find(params[:id])
     end
 
     def new
@@ -13,15 +14,13 @@ class ReceiptsController < ApplicationController
 
     def create
         @receipt = Receipt.create(receipt_params)
-        redirect_to @receipt
+        redirect_to @receipt.retailer
     end
 
     def edit
-        @receipt = Receipt.find(params[:id])
     end
 
     def update
-        @receipt = Receipt.find(params[:id])
         @receipt.update(receipt_params)
         redirect_to @receipt
     end
@@ -31,4 +30,8 @@ class ReceiptsController < ApplicationController
     def receipt_params
         params.require(:receipt).permit!
     end
+
+    def set_receipt
+        @receipt = Receipt.find(params[:id])
+    end 
 end
