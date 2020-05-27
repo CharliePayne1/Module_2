@@ -1,13 +1,31 @@
-<h1>All Retailers</h1>
-<br>
+<div class="row"
+    <div class="col s12">
+        <h2 class="center-align">All Retailers</h2>
+    </div>
+</div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+
+
 <% @retailers.each do |retailer| %>
-<h2><%= link_to retailer.name, retailer %></h2>
-<br>
-<ul>
-<li>Sector: <%= retailer.sector %></li>
-<br>
-<li>Annual Turnover: £<%= retailer.annual_turnover %></li>
-</ul>
-<br>
-<br>
+<div class="card">
+<div class="card-content">
+  <h3><%= link_to retailer.name, retailer %></h3>
+</div>
+<div class="card-tabs">
+  <ul class="tabs tabs-fixed-width">
+    <li class="tab"><a href="#Sector">Sector</a></li>
+    <li class="tab"><a class="active" href="#AnnualTurnover">Annual Turnover</a></li>
+    <li class="tab"><a href="#Established">Established</a></li>
+  </ul>
+<div class="card-content grey lighten-4">
+  <div id="Sector"><%= retailer.sector %></div>
+  <div id="AnnualTurnover">£<%= retailer.annual_turnover %></div>
+    <div id="Established"><%= retailer.established %></div>
+    </div>
+</div>
+</div>
 <%end%>

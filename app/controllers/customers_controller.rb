@@ -1,8 +1,7 @@
 class CustomersController < ApplicationController
     before_action :set_customer, only: [:show, :edit, :update]
 
-    def index
-        @customers = Customer.all
+    def login
     end
 
     def show
@@ -21,8 +20,14 @@ class CustomersController < ApplicationController
     end
 
     def update
-        @customer.update(customer_params)
-        redirect_to @customer
+        if @customer.update(customer_params)
+        flash[:notice] = "You have successfully updated your account."
+            redirect_to @customer
+        else 
+            render 'edit'
+        end 
+    end 
+
     end
 
     private 

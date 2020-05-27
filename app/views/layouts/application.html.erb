@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BankingApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<title>Banking App</title>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+    <%= render 'layouts/navigation' %>
+    <main>
+    <div class="container">
+        <%= yield %>
+        </div>
+    </main>
+    <%= render 'layouts/footer' %>
+</body>
 </html>

@@ -33,7 +33,11 @@ class BankAccount < ApplicationRecord
         # retailer_name = transaction.retailer.name
     end
 
-    
+    def available_funds
+        @available = self.funds + self.overdraft
+        @available
+    end
+
 end
 
 

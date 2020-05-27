@@ -1,1 +1,39 @@
+<% if @resource.errors.any? %>
+<div class="container">
+    <div class="row padding-form">
+        <div class="col s12 m12 l12">
+            <div class="card-panel red lighten-1">
+            <span class="white-text">
+
+<strong><%= pluralize(@resource.errors.count, "error") %></strong>
+prohibited your account from being created 
+<ul>
+    <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li> 
+        <% end %>
+    </ul>
+    </span>
+    </div>
+    </div>
+    </div>
+<% end %> 
+
 <h1>Customer Form</h1>
+        <%= form_with model: Customer.new do |f| %>
+        <%= f.label :name %>
+        <%= f.number_field :name %>
+            <br>
+            <br>
+        <%= f.label :occupation %>
+        <%= f.text_field :occupation %>
+            <br>
+            <br>
+        <%= f.label :account_number %>
+        <%= f.collection_select(:bank_account_id, BankAccount.all, :id, :account_number) %>
+            <br>
+            <br>
+        <%= f.hidden_field :_id, value: %>
+            <br>
+            <br>
+        <%= f.submit %>
+<%end%>

@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.sign-up-form {
+    padding-top: 30px;
+
+select{
+    display: block;
+}
