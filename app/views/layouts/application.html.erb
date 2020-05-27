@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BankingApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper #01579b light-blue darken-4">
+    <a href="#!" class="brand-logo">CDM Bank</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="sass.html">Log in</a></li>
+      <li><a href="badges.html">Register</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Register<i class="material-icons right"></i></a></li>
+    </ul>
+  </div>
+</nav>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
+<title>Banking App</title>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
 
-  <body>
-    <%= yield %>
-  </body>
+<%= yield %>
+<footer class="page-footer #01579b light-blue darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l4 s12">
+                <h5 class="white-text">Connect with us</h5>
+                <a class="grey-text text-lighten-4" href="#!"><i class="small material-icons">call</i>
+                <a class="grey-text text-lighten-4" href="#!"><i class="small material-icons">local_post_office</i>
+                <a class="grey-text text-lighten-4" href="#!"><i class="small material-icons">laptop_mac</i>
+                </div>
+              <div class="col l2 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2020 CDM Bank. All rights reserved.
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+          </div>
+        </footer>
+</body>
 </html>

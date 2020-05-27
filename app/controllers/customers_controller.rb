@@ -1,8 +1,7 @@
 class CustomersController < ApplicationController
     before_action :set_customer, only: [:show, :edit, :update]
 
-    def index
-        @customers = Customer.all
+    def login
     end
 
     def show
