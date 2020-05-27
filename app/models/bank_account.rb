@@ -15,6 +15,17 @@ class BankAccount < ApplicationRecord
         end
     end 
 
+    def customer_first_name
+        self.customer.first_name
+    end
+
+    def customer_last_name
+        self.customer.last_name 
+    end
+
+    def recent_transactions
+        self.receipts.max_by(3) {|receipt| receipt.created_at}
+    end
 end
 
 # Show page 
