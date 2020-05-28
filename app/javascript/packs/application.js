@@ -8,7 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-require("materialize-sprockets") 
+require("materialize-sprockets")
+require("chartkick")
+require("chart.js")
 
 $( document ).on('turbolinks:load', function() {
     $('.tabs').tabs(); 

@@ -1,41 +1,38 @@
 
-<%
-=begin%>
- <body>
-    <div class="container">
-        <h1 class="center-align"> My Accounts </h1>
-        <h2><%= @customer.full_name %></h2><br>
-        <div class="col s6 offset-s4"><span class="flow-text"><%= @customer.my_funds %></span></div>
-    </div>
-  </body>
-
-    <%= link_to '<i class="material-icons right"<create></i>Edit Profile'.html_safe, edit_customer_path(@customer), class="waves-effect waves-light btn" %>
-
-    <%= link_to '<i class="material-icons right">create</i>Edit Profile'.html_safe, edit_customer_path(@customer), class="waves-effect waves-light btn" %>
- 
-<%
-=end%>
-
         
+<div class="row">
+<div class="grid-example col s12"><span class="flow-text"><h1><%= @customer.full_name %></h1></span></div>
+<div class="grid-example col s12 m6"><span class="flow-text"><h4>Age |   <%= @customer.age %></h4></span></div>
+<div class="grid-example col s12 m6"><span class="flow-text"><h4>Occupation |<%= @customer.occupation %></h4></span></div>
+<%= link_to '<i class="material-icons right">create</i>Update your details'.html_safe, edit_customer_path(@customer), class: "waves-effect waves-light btn-small #ffee58 yellow lighten-1" %> </li>
+</div>
 
-<h1><%= @customer.full_name %></h1>
-<h4>Age: <%= @customer.age %></h4>
-<h4>Occupation: <%= @customer.occupation %><h4>
-<%= button_to 'Update your details', edit_customer_path, method: :get %>
 <br>
 <br>
-<h3> Bank Accounts </h3>
+<h3> My Accounts </h3>
+
+<div class="row">
 <% @customer.bank_accounts.each do |bank_account| %>
-<h4><%= bank_account.type_of_account %> account</h4>
-<ul>
-<h5><li>Account Number: <%= link_to bank_account.account_number, bank_account %> | Sort Code: <%= bank_account.sort_code %></li>
-<li>Available Funds: £<%= bank_account.available_funds %></li>
-<li>Balance: £<%= bank_account.funds %> | Overdraft: £<%= bank_account.overdraft %></h5></li></ul>
-<%end%>
+    <div class="col s6 m6">
+        <div class="card #607d8b blue-grey">
+            <div class="card-content white-text">
+                <span class="card-title"><h4><%= bank_account.type_of_account %> Account</h4></span>
+                    <h5><ul><li>Account Number: <%= link_to bank_account.account_number, bank_account %> | Sort Code: <%= bank_account.sort_code %></li><br>
+                        <li>Available Funds: £<%= bank_account.available_funds %></li>
+                        <li>Balance: £<%= bank_account.funds %> | Overdraft: £<%= bank_account.overdraft %></h5></li></ul>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"><View Profile</a>
+                    </div>
+                    </div>
+            </div>
+        <%end%>
+    </div>
+
 <br>
 <br>
 <br>
-<h4> Open New Account </h4>
+<h4> Open New Account </h4><br>
 <%= form_with model: BankAccount.new do |f| %>
 <%= f.hidden_field :account_number, value: Faker::Number.between(from: 10000000, to: 99999999) %>
 <%= f.hidden_field :sort_code, value: Faker::Number.between(from: 10000000, to: 99999999) %>
@@ -43,14 +40,17 @@
 <%= f.select :type_of_account, ['current', 'savings', 'foreign'] %>
 <br>
 <br>
-<%= f.label :funds %>
-<%= f.number_field :funds %>
-<br>
-<br>
 <%= f.label :overdraft_limit%>
 <%= f.select :overdraft, options_for_select((0..2000).step(250)), {:style=>'display: block;'} %>
 <br>
 <br>
+<%= f.label :funds %>
+<%= f.number_field :funds %>
+<br>
+<br>
 <%= f.hidden_field :customer_id, value: @customer.id %>
-<%= f.submit %>
+
+<%= f.submit %><br>
 <%end%>
+<br>
+<br>

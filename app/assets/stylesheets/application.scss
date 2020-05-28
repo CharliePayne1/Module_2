@@ -33,3 +33,10 @@ body {
 main {
         flex: 1 0 auto;
       }
+
+button {
+    text-align: center;
+    span {
+        margin-right: 1.5em;
+    }
+}

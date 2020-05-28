@@ -1,11 +1,25 @@
-<h1> All Bank Accounts </h1>
 
-  <% @bank_accounts.each do |account| %><br>
-  <ul>
-  <li> Account ID: <%= link_to account.id, bank_account_path(account) %> </li>
-  <li> <%= link_to account.customer.full_name, customer_path(account.customer)  %>  </li>
-  <li> <%= account.type_of_account%> account </li>
-  <li> Available Funds: £<%= account.available_funds %></li>
- <li><%= button_to "Delete Account", bank_account_path(account), method: :delete %> </li> 
- <% end %>
- </ul>
+ <div class="col s12 m7">
+    <h2 class="header">All Bank Accounts</h2>
+    <% @bank_accounts.each do |account| %><br>
+    <div class="card horizontal">
+      <div class="card-image" span style="padding-top: 60px; padding-left: 40px">
+      <i class="medium material-icons">credit_card</i>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <ul>
+          <li><p>Account ID: <%= link_to account.id, bank_account_path(account) %></p></li><br>
+          <li><%= link_to account.customer.full_name, customer_path(account.customer) %></li>
+          <li><%= account.type_of_account%> Account </li><br>
+          <li> Available Funds: £<%= account.available_funds %></li>
+          </ul>
+        </div>
+        <div class="card-action">
+        <%= button_to "Delete Account", bank_account_path(account), method: :delete %> 
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<br>

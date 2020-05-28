@@ -1,19 +1,16 @@
 <% if @customer.errors.any? %>
 <%
 =begin%>
-#  <%
-# =begin%>
-#  <div class="container">
-#     <div class="row padding-form">
-#         <div class="col s12 m12 l12">
-#             <div class="card-panel red lighten-1">
-#             <span class="white-text"> 
-# <%
-# =end%>
-
-# <strong><%= pluralize(@customer.errors.count, "error") %></strong>
-# prohibited your account from being created 
-# <ul> 
+ <%
+ <div class="container">
+    <div class="row padding-form">
+        <div class="col s12 m12 l12">
+            <div class="card-panel red lighten-1">
+            <span class="white-text"> 
+<%
+<strong><%= pluralize(@customer.errors.count, "error") %></strong>
+prohibited your account from being created 
+<ul> 
 <%
 =end%>
     <% @customer.errors.full_messages.each do |message| %>
