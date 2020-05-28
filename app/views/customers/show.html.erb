@@ -1,5 +1,7 @@
 
-<body>
+<%
+=begin%>
+ <body>
     <div class="container">
         <h1 class="center-align"> My Accounts </h1>
         <h2><%= @customer.full_name %></h2><br>
@@ -9,6 +11,10 @@
 
     <%= link_to '<i class="material-icons right"<create></i>Edit Profile'.html_safe, edit_customer_path(@customer), class="waves-effect waves-light btn" %>
 
+    <%= link_to '<i class="material-icons right">create</i>Edit Profile'.html_safe, edit_customer_path(@customer), class="waves-effect waves-light btn" %>
+ 
+<%
+=end%>
 
         
 

@@ -1,14 +1,22 @@
-<% if @resource.errors.any? %>
-<div class="container">
-    <div class="row padding-form">
-        <div class="col s12 m12 l12">
-            <div class="card-panel red lighten-1">
-            <span class="white-text">
+<% if @customer.errors.any? %>
+<%
+=begin%>
+#  <%
+# =begin%>
+#  <div class="container">
+#     <div class="row padding-form">
+#         <div class="col s12 m12 l12">
+#             <div class="card-panel red lighten-1">
+#             <span class="white-text"> 
+# <%
+# =end%>
 
-<strong><%= pluralize(@resource.errors.count, "error") %></strong>
-prohibited your account from being created 
-<ul>
-    <% @student.errors.full_messages.each do |message| %>
+# <strong><%= pluralize(@customer.errors.count, "error") %></strong>
+# prohibited your account from being created 
+# <ul> 
+<%
+=end%>
+    <% @customer.errors.full_messages.each do |message| %>
         <li><%= message %></li> 
         <% end %>
     </ul>
@@ -32,7 +40,7 @@ prohibited your account from being created
         <%= f.collection_select(:bank_account_id, BankAccount.all, :id, :account_number) %>
             <br>
             <br>
-        <%= f.hidden_field :_id, value: %>
+        <%= f.hidden_field :_id, value: @customer.id%>
             <br>
             <br>
         <%= f.submit %>

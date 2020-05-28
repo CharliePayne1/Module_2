@@ -1,13 +1,11 @@
-<h2> <%= "#{ @receipt.customer_first_name + ' ' + @receipt.customer_last_name}" %>'s transaction with <%= link_to @receipt.retailer_name, retailer_path(@receipt.retailer_id)  %> using  <%= link_to @receipt.account_type, bank_account_path(@receipt.bank_account_id)  %> </h2> 
+<h2> <%= link_to @receipt.customer_name, customer_path(@receipt.bank_account.customer)  %>'s transaction with <%= link_to @receipt.retailer_name, retailer_path(@receipt.retailer_id)  %> </h2>
   
  <h3> Total Spend: £  <%= @receipt.total_amount %> </h3>
 
- <h3> Items: <%= @receipt.items.capitalize %> </h3>
+ <h3> Items: <%= @receipt.items%> </h3>
 
+<h3> Date: <%= @receipt.created_at%> </h3>
 
-
-<%# Hi ! %>
-
- <%# <% @receipt.item_list.each do |item| %> 
-  <%# <%= item %> 
-  <%# <% end %> 
+  <button>
+  <%= link_to "Back to #{@receipt.account_type} account", bank_account_path(@receipt.bank_account_id)  %> 
+ </button>

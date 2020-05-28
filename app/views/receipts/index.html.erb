@@ -1,2 +1,22 @@
-<h1> All Transactions </h1>
+<h1>All Transactions</h1>
+<table>
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+                <th>Customer</th>
+              <th>Retailer</th>
+              <th>Date</th>
+          </tr>
+        </thead>
 
+        <tbody>
+        <% @receipts.each do |receipt| %><br>
+          <tr>
+            <td><%= link_to receipt.id, receipt_path(receipt) %></td>
+            <td><%= link_to receipt.customer_name, customer_path(receipt.bank_account.customer)  %></td>
+            <td><%= link_to receipt.retailer_name, retailer_path(receipt.retailer_id)  %></td>
+            <td><%= receipt.created_at%><br>
+            <% end %>
+          </tr>
+        </tbody>
+</table>

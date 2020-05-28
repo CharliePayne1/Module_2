@@ -1,20 +1,55 @@
-<%= button_to "Back", @bank_account.customer, method: :get %>
-<h4> <%= @bank_account.account_number %> | <%= @bank_account.sort_code %> </h4>  
-<h5>Available Funds: £<%= @bank_account.available_funds %><br>
-Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5>
-<br>
-<h5> Recent Transactions:</h5>
-  <% @bank_account.recent_transactions.each do |receipt| %><br>
-  <ul>
-  <li>Transacton ID: <%= receipt.id %></li>
-           <li>Value: £<%= receipt.total_amount.round(2) %></li>
-            <li>Date Posted: <%= receipt.created_at %></li>
-            <li>Items: <%= receipt.items %></li>
-            <% end %></ul>
 
-  <br>
-  <br>
-  <h5> Change Overdraft Limit</h5>
+ <h2> <%= link_to @bank_account.customer.full_name, customer_path(@bank_account.customer)  %> <br> 
+ <%= @bank_account.type_of_account %> Account </h2> 
+
+<h5> Account Number: <%= @bank_account.account_number %> | Sort Code: <%= @bank_account.sort_code %> <br>
+
+Available Funds: £<%= @bank_account.available_funds %><br>
+
+Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5> 
+
+ <h2> Transactions Overview </h2> 
+
+<h6> <ul>
+<% if @bank_account.receipts.length > 0 %>
+ <li> Maximum spend: £ <%= @bank_account.retailer_spent_most_with.total_amount %> at <%= link_to @bank_account.retailer_spent_most_with.retailer.name, receipt_path(@bank_account.retailer_spent_most_with.id) %>  </li> 
+
+ <li> Average Transactions: £ <%= @bank_account.avrg_transaction %> </li> 
+
+ </ul> </h6> 
+
+ <h5>Recent Transactions</h5>
+ <table>
+         <thead>
+           <tr>
+            <th>Transaction ID</th>
+            <th> Retailer </th>
+                 <th>Value</th>
+               <th>Date</th>
+               <th>Items Purchased</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+           <% @bank_account.recent_transactions.each do |receipt| %><br>
+             <td><%= receipt.id %></td><br>
+             <td><%= link_to receipt.retailer.name, receipt_path(receipt) %></td>
+             <td> £<%= receipt.total_amount.round(2) %></td><br>
+             <td><%= receipt.created_at %></td>
+             <td><%= receipt.items %></td><br>
+           </tr>
+         </tbody>
+         <% end %>
+ </table>
+
+ <% else %>
+ <%= "Currently there are no transactions to display" %>
+ <%end%>
+
+<br>
+<br>
+<br>
+  <h5> Change Overdraft Limit</h5><br>
   <%= form_for @bank_account do |f| %>
   <%= f.label :overdraft %>
  
@@ -24,3 +59,11 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
   <br>
   <%= f.submit %>
   <%end%>
+
+  <div class="row">
+    <div class="col s12 m6 l3"><p><%= button_to "All Customers", customers_path, method: :get %></p></div>
+    <div class="col s12 m6 l3"><p><%= button_to "All Bank Accounts", bank_accounts_path, method: :get %></p></div>
+    <div class="col s12 m6 l3"><p><%= button_to "All Retailers", retailers_path, method: :get %></p></div>
+    <div class="col s12 m6 l3"><p><%= button_to "All Transactions", receipts_path, method: :get %></p></div>
+  </div>
+

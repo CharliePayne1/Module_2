@@ -1,2 +1,11 @@
 <h1> All Bank Accounts </h1>
 
+  <% @bank_accounts.each do |account| %><br>
+  <ul>
+  <li> Account ID: <%= link_to account.id, bank_account_path(account) %> </li>
+  <li> <%= link_to account.customer.full_name, customer_path(account.customer)  %>  </li>
+  <li> <%= account.type_of_account%> account </li>
+  <li> Available Funds: £<%= account.available_funds %></li>
+ <li><%= button_to "Delete Account", bank_account_path(account), method: :delete %> </li> 
+ <% end %>
+ </ul>

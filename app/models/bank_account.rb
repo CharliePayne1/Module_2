@@ -1,6 +1,6 @@
 class BankAccount < ApplicationRecord
     belongs_to :customer
-    has_many :receipts
+    has_many :receipts, dependent: :destroy
     has_many :retailers, through: :receipts
 
     validates :customer, presence: true 
@@ -15,34 +15,32 @@ class BankAccount < ApplicationRecord
     #     end
     # end 
 
-    def customer_first_name
-        self.customer.first_name
-    end
-
-    def customer_last_name
-        self.customer.last_name 
-    end
-
+     # 5 most recent transactions 
     def recent_transactions
-        self.receipts.max_by(3) {|receipt| receipt.created_at}
+        self.receipts.max_by(5) {|receipt| receipt.created_at}
+    end
+
+    # Average transaction value
+    def avrg_transaction
+       total_transaction = self.receipts.sum {|receipt| receipt.total_amount}
+       number_of_transactions = self.receipts.size.to_i
+       average = total_transaction / number_of_transactions
+    end
+
+    def retailer_spent_most_with
+        transaction = self.receipts.max_by {|receipt| receipt.total_amount}
+        # amount = transaction.total_amount
+        # retailer_name = transaction.retailer.name
     end
 
     def available_funds
+        if self.overdraft && self.funds
         @available = self.funds + self.overdraft
         @available
+        else 
+        @available = 0
+        @available
     end
-
 end
 
-# Show page 
-# available_funds - funds + overdraft
-# big_spender customer occupation with highest available funds
-# Delete the bank account 
-# View your 10 most recent transactions link to most recent receipts 
-# Where have they spent the most money?
-# Average transaction value
-# Average basket size 
-# Link to customer profile 
-# Edit the overdraft (increasing) & available funds by paying money in/ withdrawing money 
-# Overdraft can only increase
-# Available funds can increase/decrease 
+end
