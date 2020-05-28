@@ -14,14 +14,26 @@ class Retailer < ApplicationRecord
 
     def annual_turnover_from_receipts
         @revenue_from_receipts = self.receipts.sum {|receipt| receipt.total_amount}.to_f
-        @percentage = @revenue_from_receipts / self.annual_turnover
-        @percentage.round(3)
+        @percentage = (@revenue_from_receipts / self.annual_turnover) * 100
+        @percentage.round(2)
     end
 
     def annual_turnover_from_recent_receipts
         @revenue_from_most_recent = self.most_recent.sum {|receipt| receipt.total_amount}.to_f
-        @percentage = @revenue_from_most_recent / self.annual_turnover
-        @percentage.round(3)
+        @percentage = (@revenue_from_most_recent / self.annual_turnover) * 100
+        @percentage.round(2)
+    end
+
+    def biggest_transaction
+        @biggest_transaction = self.receipts.max_by {|receipt| receipt.total_amount}
+        @biggest_transaction
+    end
+
+    def atv 
+        @total = self.receipts.sum {|receipt| receipt.total_amount}.to_f
+        @number = self.receipts.count
+        @atv = @total / @number
+        @atv.round(2)
     end
 
 end
