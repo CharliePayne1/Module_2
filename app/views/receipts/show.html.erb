@@ -1,11 +1,32 @@
-<h2> <%= link_to @receipt.customer_name, customer_path(@receipt.bank_account.customer)  %>'s transaction with <%= link_to @receipt.retailer_name, retailer_path(@receipt.retailer_id)  %> </h2>
-  
- <h3> Total Spend: £  <%= @receipt.total_amount %> </h3>
+<h3> <%= @receipt.customer_name %>'s transaction with retailer <%= @receipt.retailer_name %> </h3>
+<table>
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+                <th>Total</th>
+              <th>Date</th>
+              <th>Items Purchased</th>
+          </tr>
+        </thead>
 
- <h3> Items: <%= @receipt.items%> </h3>
-
-<h3> Date: <%= @receipt.created_at%> </h3>
-
+        <tbody>
+          <tr>
+            <td><%= @receipt.id %></td>
+            <td> £<%= @receipt.total_amount.round(2) %></td>
+            <td><%= @receipt.created_at %></td>
+            <td><%= @receipt.items %></td><br>
+          </tr>
+        </tbody>
+</table>
+<br>
   <button>
+  <%= link_to "Back to #{@receipt.customer_name}", customer_path(@receipt.bank_account.customer)  %> 
+ </button>
+
+   <button>
   <%= link_to "Back to #{@receipt.account_type} account", bank_account_path(@receipt.bank_account_id)  %> 
+ </button>
+
+   <button>
+  <%= link_to "Back to retailer", retailer_path(@receipt.retailer_id)   %> 
  </button>
