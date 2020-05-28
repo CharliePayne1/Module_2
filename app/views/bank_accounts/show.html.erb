@@ -7,6 +7,18 @@
 Available Funds: £<%= @bank_account.available_funds %><br>
 
 Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5> <br>
+<br>
+<br>
+  <h5> Change Overdraft Limit</h5>
+  <%= form_for @bank_account do |f| %>
+  <%= f.label :overdraft %>
+ 
+  <%= f.select :overdraft, options_for_select((0..2000).step(250)), {:style=>'display: block;'} %>
+
+  <br>
+  <br>
+  <%= f.submit %>
+  <%end%>
 
  <h2> Transactions Overview </h2> 
 
@@ -33,19 +45,8 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
 <%end%>
   <br>
   <br>
-  <button>
-  <%= link_to "Back to #{@bank_account.customer.full_name}", customer_path(@bank_account.customer)  %> 
- </button>
-  <%= button_to "Delete Account", bank_account_path(@bank_account), method: :delete %>
-  <br>
-  <h5> Change Overdraft Limit</h5>
-  <%= form_for @bank_account do |f| %>
-  <%= f.label :overdraft %>
- 
-  <%= f.select :overdraft, options_for_select((0..2000).step(250)), {:style=>'display: block;'} %>
+  <%= button_to "Close Account", bank_account_path(@bank_account), method: :delete, data: { confirm: "Are you sure you want to delete this account?"} %>
 
-  <br>
-  <br>
-  <%= f.submit %>
-  <%end%>
+  <%= button_to "Back", customer_path(@bank_account.customer), method: :get  %>
+  
 
