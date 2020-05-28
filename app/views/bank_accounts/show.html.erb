@@ -28,7 +28,7 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
             <% end %></ul>
 
   <br>
-  <%= button_to "Delete Account", @bank_account, method: :delete %>
+  <%= button_to "Delete Account", bank_account_path(@bank_account), method: :delete %>
   <%= button_to "Back", @bank_account.customer, method: :get %>
   <br>
   <h5> Change Overdraft Limit</h5>

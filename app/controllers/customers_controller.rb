@@ -4,6 +4,10 @@ class CustomersController < ApplicationController
     def login
     end
 
+    def index
+        @customers = Customer.all
+     end
+
     def show
     end
 
@@ -27,8 +31,6 @@ class CustomersController < ApplicationController
             render 'edit'
         end 
     end 
-
-    end
 
     private 
 

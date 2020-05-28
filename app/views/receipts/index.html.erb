@@ -1,2 +1,12 @@
 <h1> All Transactions </h1>
 
+  <% @receipts.each do |receipt| %><br>
+  <ul>
+  <li> Transaction ID: <%= link_to receipt.id, receipt_path(receipt) %> </li>
+  <li> Customer: <%= link_to receipt.customer_name, customer_path(receipt.bank_account.customer)  %>  </li>
+  <li> Retailer: <%= link_to receipt.retailer_name, retailer_path(receipt.retailer_id)  %> </li>
+  <li> Date: <%= receipt.created_at%>  </li>
+ <% end %>
+ </ul>
+
+ 

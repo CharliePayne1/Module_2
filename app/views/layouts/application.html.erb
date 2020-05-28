@@ -11,6 +11,10 @@
     <%= render 'layouts/navigation' %>
     <main>
     <div class="container">
+    <%= button_to "All Customers", customers_path, method: :get %>
+    <%= button_to "All Bank Accounts", bank_accounts_path, method: :get %>
+    <%= button_to "All Retailers", retailers_path, method: :get %>
+    <%= button_to "All Transactions", receipts_path, method: :get %>
         <%= yield %>
         </div>
     </main>
