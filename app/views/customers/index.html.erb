@@ -4,7 +4,9 @@
   <ul>
   <li> Customer ID: <%= customer.id %> </li>
   <li> <%= link_to customer.full_name, customer_path(customer)  %>  </li>
-  <%# <li> <%= customer.bank_accounts.type_of_account%> account </li> %>
+  <% customer.bank_accounts.each do |bank_account| %> 
+  <li> <%= bank_account.type_of_account %> account | <%= link_to bank_account.account_number, bank_account %> <li>
+  <%end%>
   <li> <%# <%= button_to "Edit customer #{customer.id} details", customer_path(customer), method: :edit %> </li>
   <li>  <%# <%= button_to "Delete customer #{customer.id}", customer_path(customer), method: :edit %> </li>
  <% end %>
