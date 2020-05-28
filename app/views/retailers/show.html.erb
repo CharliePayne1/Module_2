@@ -29,7 +29,7 @@
         <tbody>
         <% @retailer.most_recent.each do |receipt| %>
           <tr>
-            <td><%= receipt.id %></td>
+            <td><%= link_to receipt.id, receipt_path(receipt) %></td>
             <td> £<%= receipt.total_amount.round(2) %></td>
             <td><%= receipt.created_at %></td>
             <td><%= receipt.items %></td><br>
