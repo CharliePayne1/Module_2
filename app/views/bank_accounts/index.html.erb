@@ -6,6 +6,6 @@
   <li> <%= link_to account.customer.full_name, customer_path(account.customer)  %>  </li>
   <li> <%= account.type_of_account%> account </li>
   <li> Available Funds: £<%= account.available_funds %></li>
-  <li>  <%# <%= button_to "Delete Account #{account.id}", bank_account_path(@bank_account), method: :delete %> </li>
+ <li><%= button_to "Delete Account", bank_account_path(account), method: :delete %> </li> 
  <% end %>
  </ul>

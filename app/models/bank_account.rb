@@ -34,16 +34,13 @@ class BankAccount < ApplicationRecord
     end
 
     def available_funds
+        if self.overdraft && self.funds
         @available = self.funds + self.overdraft
         @available
+        else 
+        @available = 0
+        @available
     end
-
 end
 
-
-# big_spender customer occupation with highest available funds
-# Delete the bank account 
-# Where have they spent the most money?
-# Edit the overdraft (increasing) & available funds by paying money in/ withdrawing money 
-# Overdraft can only increase
-# Available funds can increase/decrease 
+end
