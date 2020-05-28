@@ -1,0 +1,11 @@
+<h1> All Customers</h1>
+
+ <% @customers.each do |customer| %><br>
+  <ul>
+  <li> Customer ID: <%= customer.id %> </li>
+  <li> <%= link_to customer.full_name, customer_path(customer)  %>  </li>
+  <%# <li> <%= customer.bank_accounts.type_of_account%> account </li> %>
+  <li> <%# <%= button_to "Edit customer #{customer.id} details", customer_path(customer), method: :edit %> </li>
+  <li>  <%# <%= button_to "Delete customer #{customer.id}", customer_path(customer), method: :edit %> </li>
+ <% end %>
+ </ul>

@@ -14,6 +14,10 @@ class Receipt < ApplicationRecord
         self.retailer.name 
     end
 
+    def customer_name
+        self.bank_account.customer.full_name
+    end
+
     def account_type
         self.bank_account.type_of_account
     end
