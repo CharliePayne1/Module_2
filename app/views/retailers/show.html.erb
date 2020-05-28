@@ -4,7 +4,7 @@
 <h3>Company Overview:</h3>
 <ul>
 <br>
-<li>Established in <%= @retailer.established %></li>
+<li>Established in <%= link_to @retailer.established, "https://www.google.com/search?q=what+happened+in+@retailer.established&rlz=1C5CHFA_enGB892GB893&oq=what+happened+in+2000&aqs=chrome..69i57j0l7.5839j0j7&sourceid=chrome&ie=UTF-8" %></li>
 <br>
 <li>Sector: <%= @retailer.sector %></li>
 <br>
@@ -39,10 +39,12 @@
 </table>
 
 <h3>Analytics</h3>
-<ul>
-<li>% annual turnover from most recent receipts: <strong><%= @retailer.annual_turnover_from_recent_receipts %>%</strong>
-<li>% annual turnover coming from all receipts in this app: <strong><%= @retailer.annual_turnover_from_receipts %>%</strong>
-</ul>
+<h5>1. % Annual Turnover</h5>
+From 3 most recent receipts: <strong><%= @retailer.annual_turnover_from_recent_receipts %>%</strong><br>
+From all receipts in Fund DMC: <strong><%= @retailer.annual_turnover_from_receipts %>%</strong>
+<h5>2. Transactions </h5>
+Highest Transaction Value: £<strong><%= link_to @retailer.biggest_transaction.total_amount, @retailer.biggest_transaction %> | account number: <%= @retailer.biggest_transaction.bank_account.account_number %></strong><br>
+Average Transaction Value: £<strong><%= @retailer.atv %></strong>
 <br>
 <h4> Log New Transaction for <%= @retailer.name %> </h4>
 <%= form_with model: Receipt.new do |f| %>
