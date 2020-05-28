@@ -14,6 +14,7 @@ Available Funds: £<%= @bank_account.available_funds %><br>
 Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft %></h5> <br>
 <br>
 <br>
+
  <h5> Transactions Analytics </h5>
 <h6><ul><% if @bank_account.receipts.length > 0 %>
  <li> Maximum spend: £ <%= @bank_account.retailer_spent_most_with.total_amount %> at <%= link_to @bank_account.retailer_spent_most_with.retailer.name, retailer_path(@bank_account.retailer_spent_most_with.retailer) %> 
@@ -25,10 +26,15 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
   </h6></ul><br>
   <br>
 
+  <class="collapsible">
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i>See Transaction</div>
+    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
 
+
+<br>
 <h5>Recent Transactions</h5>
  <table>
-         <thead>
+        <thead>
            <tr>
             <th>Transaction ID</th>
             <th> Retailer </th>
@@ -37,14 +43,14 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
                <th>Items Purchased</th>
            </tr>
          </thead>
-         <tbody>
+      <tbody>
            <tr>
-           <% @bank_account.recent_transactions.each do |receipt| %><br>
-             <td><%= receipt.id %></td><br>
+           <% @bank_account.recent_transactions.each do |receipt| %>
+             <td><%= receipt.id %></td>
              <td><%= link_to receipt.retailer.name, receipt_path(receipt) %></td>
-             <td> £<%= receipt.total_amount.round(2) %></td><br>
+             <td> £<%= receipt.total_amount.round(2) %></td>
              <td><%= receipt.created_at %></td>
-             <td><%= receipt.items %></td><br>
+             <td><%= receipt.items %></td>
            </tr>
          </tbody>
          <% end %>
@@ -54,10 +60,8 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
+
+
 
   <h5> Change Overdraft Limit</h5><br>
   <%= form_for @bank_account do |f| %>
