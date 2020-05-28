@@ -7,12 +7,12 @@ class Customer < ApplicationRecord
     validates :age, numericality: { greater_than: 16 }
     validates :occupation, presence: true
     
-    before_save :uppercase_name
+    # before_save :uppercase_name
     
-    def uppercase_name
-        self.first_name = self.first_name.upcase
-        self.last_name = self.last_name.upcase
-    end 
+    # def uppercase_name
+    #     self.first_name = self.first_name.upcase
+    #     self.last_name = self.last_name.upcase
+    # end 
     
     def full_name 
         "#{last_name}, #{first_name}" 
