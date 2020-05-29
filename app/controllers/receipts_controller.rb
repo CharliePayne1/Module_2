@@ -16,7 +16,6 @@ class ReceiptsController < ApplicationController
         @receipt = Receipt.create(receipt_params)
         if @receipt.total_amount <= @receipt.bank_account.funds 
            @receipt.bank_account.funds -= @receipt.total_amount
-    byebug
         else 
             @receipt.bank_account.funds = 0
             @receipt.bank_account.overdraft = @receipt.bank_account.overdraft + @receipt.bank_account.funds - @receipt.total_amount
