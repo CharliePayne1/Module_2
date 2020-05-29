@@ -22,13 +22,13 @@
 <br>
 
   <button>
-  <%= link_to "Back to #{@receipt.customer_name}", customer_path(@receipt.bank_account.customer)  %> 
+  <%= link_to "Show #{@receipt.customer_name}", customer_path(@receipt.bank_account.customer)  %> 
  </button>
 
    <button>
-  <%= link_to "Back to #{@receipt.account_type} Account", bank_account_path(@receipt.bank_account_id)  %> 
+  <%= link_to "Show #{@receipt.account_type} Account", bank_account_path(@receipt.bank_account_id)  %> 
  </button>
 
    <button>
-  <%= link_to "Back to Retailer", retailer_path(@receipt.retailer_id)   %> 
+  <%= link_to "Show Retailer", retailer_path(@receipt.retailer_id)   %> 
  </button>

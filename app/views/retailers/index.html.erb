@@ -1,31 +1,27 @@
-<div class="row"
-    <div class="col s12">
-        <h2 class="center-align">All Retailers</h2>
-    </div>
-</div>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
-
-
+<h2 class="center-align">All Retailers</h2>
+<br>
+<div>
 <% @retailers.each do |retailer| %>
-<div class="card">
-<div class="card-content">
-  <h3><%= link_to retailer.name, retailer %></h3>
+  <h3><%= link_to retailer.name, retailer %></h3><br>
+
+  <table>
+        <thead>
+          <tr>
+            <th>Sector</th>
+              <th>Annual Turnover</th>
+              <th>Established</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= retailer.sector %></td>
+            <td><%= retailer.annual_turnover %></td>
+            <td><%= retailer.established %></td><br>
+            <br>
+            <% end %>
+          </tr>
+        </tbody>
+</table>
 </div>
-<div class="card-tabs">
-  <ul class="tabs tabs-fixed-width">
-    <li class="tab"><a href="#Sector">Sector</a></li>
-    <li class="tab"><a class="active" href="#AnnualTurnover">Annual Turnover</a></li>
-    <li class="tab"><a href="#Established">Established</a></li>
-  </ul>
-<div class="card-content grey lighten-4">
-  <div id="Sector"><%= retailer.sector %></div>
-  <div id="AnnualTurnover">£<%= retailer.annual_turnover %></div>
-    <div id="Established"><%= retailer.established %></div>
-    </div>
-</div>
-</div>
-<%end%>
+<br>
+<br>
