@@ -12,12 +12,25 @@ require("materialize-sprockets")
 require("chartkick")
 require("chart.js")
 
+
 $( document ).on('turbolinks:load', function() {
     $('.tabs').tabs(); 
     $(".dropdown-trigger").dropdown();
     $('#fade-out-target').fadeOut(4000);
     $('.collapsible').collapsible();
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tap-target');
+    var instances = M.TapTarget.init(elems, options);
+    instances.next();
+var elem = document.querySelector('.tabs'); var instance = M.Tabs.init(elem, {});
+  })
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
 
 
 

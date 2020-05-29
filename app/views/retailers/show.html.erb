@@ -1,20 +1,31 @@
 
 
+
 <h1><%= @retailer.name %></h1>
-<h4>Company Overview</h4>
-<ul>
-<br>
-<li>Established in <%= link_to @retailer.established, "https://www.google.com/search?q=what+happened+in+@retailer.established&rlz=1C5CHFA_enGB892GB893&oq=what+happened+in+2000&aqs=chrome..69i57j0l7.5839j0j7&sourceid=chrome&ie=UTF-8" %></li>
-<br>
-<li>Sector: <%= @retailer.sector %></li>
-<br>
-<li>Annual Turnover: £<%= @retailer.annual_turnover.round(2) %></li>
-<br>
-<li>No. of employees: <%= @retailer.employees %></li>
-</ul>
-<%= button_to 'Edit Retailer', edit_retailer_path, method: :get %>
 <br>
 
+<h4>Company Overview</h4>
+<div>
+<div class="card-tabs">
+  <ul class="tabs tabs-fixed-width">
+    <li class="tab"><a href="#Sector">Sector</a></li>
+    <li class="tab"><a class="active" href="#AnnualTurnover">Annual Turnover</a></li>
+    <li class="tab"><a href="#Established">Established In</a></li>
+    <li class="tab"><a href="#Employees">Employees</a></li>
+  </ul>
+<div class="card-content grey lighten-4"><br>
+  <div class="center-align"><strong><div id="Sector"><%= @retailer.sector %></div>
+  <div id="AnnualTurnover">£<%= @retailer.annual_turnover %></div>
+    <div id="Established"><%= @retailer.established %></div>
+    <div id="Employees"><%= @retailer.employees %></div><br>
+    </div><strong></div>
+</div>
+</div>
+<br>
+<br>
+<%= button_to 'Edit Retailer', edit_retailer_path, method: :get %><br>
+
+<br>
 <h4>Recent Transactions</h4>
 <table>
         <thead>
@@ -38,6 +49,7 @@
         </tbody>
 </table>
 
+<br>
 <br>
 <br>
 
@@ -70,7 +82,7 @@
         </thead>
         <tbody>
           <tr>
-            <td> £<strong><%= link_to @retailer.biggest_transaction.total_amount, @retailer.biggest_transaction %> <br> Account No. <%= @retailer.biggest_transaction.bank_account.account_number %></strong><br></td>
+            <td> £<strong><%= link_to @retailer.biggest_transaction.total_amount, @retailer.biggest_transaction %></strong> <br><span class="grey-text text-lighten-1">Account No. <%= @retailer.biggest_transaction.bank_account.account_number %></span><br></td>
             <td> £<strong><%= @retailer.atv %></strong></td>
           </tr>
         </tbody>
@@ -81,6 +93,7 @@
 <br>
 <br>
 <br>
+
 <h4> Log New Transaction for <%= @retailer.name %> </h4><br>
 <%= form_with model: Receipt.new do |f| %>
     <%= f.label :account_number %>
@@ -98,6 +111,7 @@
 <br>
 <%= f.submit %>
 <%end%>
+</div>
 <br>
 <br>
 <br>

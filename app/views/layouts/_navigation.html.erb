@@ -8,23 +8,17 @@
 </ul>
 <nav>
   <div class="nav-wrapper #01579b light-blue darken-4">
-    <%
-=begin%>
- <a href="<%= root_path %>" class="brand-logo"> 
-<%
-=end%>
-    <img class="responsive-img" src=".jpg">
+ <a href="<%= root_path %>" class="brand-logo"><Fund DMC>
     </a>
     <ul class="right hide-on-med-and-down">
-      <%
-=begin%>
- <li><a href="<%= root_path %>">Home</a></li>
-      <li><a href="<%= root_path %>">Login</a></li> 
-<%
-=end%>
+ <li><a href="<%= customers_path %>">All Customers</a></li>
+    <li><a href="<%= bank_accounts_path %>">All Bank Accounts</a></li> 
+    <li><a href="<%= retailers_path %>">All Retailers</a></li> 
+    <li><a href="<%= receipts_path %>">All Transactions</a></li> 
     </ul>
   </div>
 </nav>
+
 <% flash.each do |key, msg| %>
 <div class="container">
     <div class="row padding-form">
