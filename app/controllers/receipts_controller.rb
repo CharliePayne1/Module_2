@@ -18,7 +18,7 @@ class ReceiptsController < ApplicationController
             if
             @receipt.total_amount <= @receipt.bank_account.funds 
             @receipt.bank_account.funds -= @receipt.total_amount
-            @bank.bank_account.funds
+            @receipt.bank_account.funds
             else
             @receipt.bank_account.overdraft = ((@receipt.bank_account.overdraft + @receipt.bank_account.funds) - @receipt.total_amount)
             @receipt.bank_account.funds = 0
