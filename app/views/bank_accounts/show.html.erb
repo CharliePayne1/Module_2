@@ -25,12 +25,13 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
            </tr>
            <% else %>
           <%= "Currently there are no transactions to display." %>
-      <%end%>
+          <%end%>
   </tbody>
  </table>
  <br>
- <button > <%= link_to "See Transaction", receipt_path(@bank_account.retailer_spent_most_with) %> </button> 
-
+ <% if @bank_account.receipts.length > 0 %>
+<button > <%= link_to "See Transaction", receipt_path(@bank_account.retailer_spent_most_with) %> </button>  
+ <%end%>
  <br>
 <br>
 <br>

@@ -4,7 +4,7 @@ class Receipt < ApplicationRecord
   
    validates :bank_account, presence: true 
    validates :total_amount, presence: true, numericality: true
-   #validate :sufficient_funds
+   validate :sufficient_funds
 
     # TRANSACTION_TYPES = ["withdraw", "deposit"]
     # include transaction_type?
@@ -28,7 +28,6 @@ class Receipt < ApplicationRecord
     end
 
     def sufficient_funds
-        #Check if the receipts total amount is > available funds
-        #If it is return an error message: self.errors.add(:total_amount, "Transaction rejected - Please check your available funds.")
+        self.total_amount < self.bank_account.available_funds
     end 
 end

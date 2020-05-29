@@ -2,10 +2,9 @@
 <br>
 <div>
 <% @retailers.each do |retailer| %>
-  <h3><%= link_to retailer.name, retailer %></h3><br>
-
   <table>
         <thead>
+        <h3><%= link_to retailer.name, retailer %></h3><br>
           <tr>
             <th>Sector</th>
               <th>Annual Turnover</th>
