@@ -83,12 +83,13 @@
         </thead>
         <tbody>
           <tr>
-            <td> £<strong><%= link_to @retailer.biggest_transaction.total_amount, @retailer.biggest_transaction %></strong> <br><span class="grey-text text-lighten-1">Account No. <%= @retailer.biggest_transaction.bank_account.account_number %></span><br></td>
+            <td> £<strong><%= @retailer.biggest_transaction.total_amount %></strong> <br><span class="grey-text text-lighten-1">Account No. <%= @retailer.biggest_transaction.bank_account.account_number %></span><br></td>
             <td> £<strong><%= @retailer.atv %></strong></td>
           </tr>
         </tbody>
 </table>
-
+<br>
+<button > <%= link_to "See Transaction", @retailer.biggest_transaction %> </button> 
 
 
 <br>
@@ -98,7 +99,7 @@
 <h4> Log New Transaction for <%= @retailer.name %> </h4><br>
 <%= form_with model: Receipt.new do |f| %>
     <%= f.label :account_number %>
-    <%= f.collection_select(:bank_account_id, BankAccount.all, :id, :account_number) %>
+    <%= f.collection_select(:bank_account_id, BankAccount.order('account_number ASC'), :id, :account_number) %>
 <br>
 <%= f.label :items %>
 <%= f.text_field :items %>
