@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-    before_action :set_customer, only: [:show, :edit, :update]
+    before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
     def login
     end
@@ -53,6 +53,11 @@ class CustomersController < ApplicationController
             render 'edit'
         end 
     end 
+
+    def destroy
+        @customer.destroy
+        redirect_to customers_path
+    end
 
     private 
 

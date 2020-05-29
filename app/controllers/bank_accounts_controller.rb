@@ -28,6 +28,9 @@ class BankAccountsController < ApplicationController
 
     def destroy
         @bank_account.destroy
+        # @bank_account.customer.no_account
+        #Where would we redirect to if we have deleted the customer
+        #if ...else ?
         redirect_to @bank_account.customer
     end
 

@@ -2,7 +2,7 @@
  <div class="col s12 m7">
     <h2 class="header">All Customers</h2>
     <% @customers.each do |customer| %>
-    <% customer.bank_accounts.each do |bank_account| %> 
+    
     <div class="card horizontal">
       <div class="card-image" span style="padding-top: 60px; padding-left: 40px">
       <i class="medium material-icons">person_outline</i>
@@ -11,16 +11,19 @@
         <div class="card-content">
           <ul>
           <li><p>Customer ID: <%= customer.id %></p></li><br>
-          <li><%= link_to customer.full_name, customer_path(customer) %></li>
+          <li><%= link_to customer.full_name, customer_path(customer) %></li> <br>
+          <% customer.bank_accounts.each do |bank_account| %> 
           <li><%= bank_account.type_of_account %> account | <%= link_to bank_account.account_number, bank_account %></li><br>
+            <% end %>
           </ul>
         </div>
         <div class="card-action">
-        <%= link_to '<i class="material-icons right">create</i>Edit customer details'.html_safe, edit_customer_path(customer), class: "waves-effect waves-light btn-small blue darken-2" %> </li>
+        <%= link_to '<i class="material-icons right">create</i>Edit customer details'.html_safe, edit_customer_path(customer), class: "waves-effect waves-light btn-small blue darken-2" %>
+        <%= button_to "Delete Customer", customer_path(customer), method: :delete, class: "waves-effect waves-light btn-small blue darken-2" %>
         </div>
       </div>
     </div>
-    <% end %>
+  
     <% end %>
   </div>
 
