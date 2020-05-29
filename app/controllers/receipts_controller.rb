@@ -14,7 +14,14 @@ class ReceiptsController < ApplicationController
 
     def create
         @receipt = Receipt.create(receipt_params)
-        redirect_to @receipt.retailer
+        if @receipt.total_amount <= @receipt.bank_account.funds 
+           @receipt.bank_account.funds -= @receipt.total_amount
+    byebug
+        else 
+            @receipt.bank_account.funds = 0
+            @receipt.bank_account.overdraft = @receipt.bank_account.overdraft + @receipt.bank_account.funds - @receipt.total_amount
+        end
+        redirect_to @receipt
     end
 
     def edit
