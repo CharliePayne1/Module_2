@@ -8,7 +8,6 @@ Customer.destroy_all
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         age: (16..100).to_a.sample,
-        # dob: faker::dateTimeBetween('1930-01-01', '2003-12-31')
         occupation: Faker::Company.profession
     })
 end
@@ -52,3 +51,4 @@ end
 #customer_id: Faker::Number.within(range: 1..30)
 #customer_id: Customer.all.sample
 #BankAccount.create(account_number: 12345678, sort_code: 123456, type_of_account: “pls work”, funds: 404, overdraft: 500, customer_id: 15)
+ # dob: faker::dateTimeBetween('1930-01-01', '2003-12-31')

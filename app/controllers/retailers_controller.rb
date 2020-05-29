@@ -1,5 +1,5 @@
 class RetailersController < ApplicationController
-    before_action :set_retailer, only: [:show, :edit, :update]
+    before_action :set_retailer, only: [:show, :edit, :update, :show_all]
 
     def index
         @retailers = Retailer.all
@@ -19,6 +19,9 @@ class RetailersController < ApplicationController
             else 
             render :edit
         end
+    end
+
+    def show_all
     end
 
     private 

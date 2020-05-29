@@ -20,12 +20,13 @@
         <div class="card #607d8b blue-grey lighten-3">
             <div class="card-content white-text">
                 <span class="card-title"><h4><%= bank_account.type_of_account %> Account</h4></span>
-                    <h5><ul><li>Account Number: <%= link_to bank_account.account_number, bank_account %> | Sort Code: <%= bank_account.sort_code %></li><br>
+                    <h5><ul><li>Account Number: <%= link_to bank_account.account_number, bank_account %> <br> | Sort Code: <%= bank_account.sort_code %></li><br>
                         <li>Available Funds: £<%= bank_account.available_funds %></li>
-                        <li>Balance: £<%= bank_account.funds %> | Overdraft: £<%= bank_account.overdraft %></h5></li></ul>
+                        <li> | Balance: £<%= bank_account.funds %> <br>
+                        | Overdraft: £<%= bank_account.overdraft %></h5></li></ul>
                     </div>
                     <div class="card-action">
-                        <a href="#"><View Profile</a>
+                        <a href="#">View Profile</a>
                     </div>
                     </div>
             </div>

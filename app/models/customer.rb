@@ -4,8 +4,9 @@ class Customer < ApplicationRecord
     
     validates :first_name, presence: true
     validates :last_name, presence: true 
-    validates :age, numericality: { greater_than: 16 }
     validates :occupation, presence: true
+    validates :age, numericality: { greater_than: 16 }
+    
     
     # before_save :uppercase_name
     

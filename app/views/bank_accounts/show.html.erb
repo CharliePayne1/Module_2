@@ -50,7 +50,7 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
       <tbody>
            <tr>
            <% @bank_account.recent_transactions.each do |receipt| %>
-             <td><%= receipt.id %></td>
+             <td><%= link_to receipt.id, receipt_path(receipt) %></td>
              <td><%= link_to receipt.retailer.name, receipt_path(receipt) %></td>
              <td> £<%= receipt.total_amount.round(2) %></td>
              <td><%= receipt.created_at %></td>
@@ -59,7 +59,8 @@ Balance: £<%= @bank_account.funds %> | Overdraft: £<%= @bank_account.overdraft
          </tbody>
          <% end %>
  </table>
-
+ <br>
+<%= button_to "Show More", show_all_receipts_path(@bank_account) %>
 <br>
 <br>
 <br>
