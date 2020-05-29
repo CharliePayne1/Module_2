@@ -35,5 +35,5 @@ class Retailer < ApplicationRecord
         @atv = @total / @number
         @atv.round(2)
     end
-
+    
 end

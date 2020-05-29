@@ -1,0 +1,32 @@
+<h2> All <%= @bank_account.customer.full_name %> transactions </h2>
+
+ <table>
+        <thead>
+           <tr>
+            <th>Transaction ID</th>
+            <th> Retailer </th>
+                 <th>Value</th>
+               <th>Date</th>
+               <th>Items Purchased</th>
+           </tr>
+         </thead>
+      <tbody>
+           <tr>
+           <% @bank_account.receipts.each do |receipt| %>
+             <td><%= link_to receipt.id, receipt_path(receipt) %></td>
+             <td><%= link_to receipt.retailer.name, receipt_path(receipt) %></td>
+             <td> £<%= receipt.total_amount.round(2) %></td>
+             <td><%= receipt.created_at %></td>
+             <td><%= receipt.items %></td>
+           </tr>
+         </tbody>
+         <% end %>
+ </table>
+
+ <button>
+  <%= link_to "Show #{@bank_account.customer.full_name }", customer_path(@bank_account.customer)  %> 
+ </button>
+
+   <button>
+  <%= link_to "Show #{@bank_account.type_of_account} Account", bank_account_path(@bank_account)  %> 
+ </button>

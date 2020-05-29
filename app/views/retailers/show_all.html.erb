@@ -1,0 +1,27 @@
+<h2> All Transactions for Retailer <br> <%= @retailer.name %>  </h2>
+
+ 
+<table>
+        <thead>
+           <tr>
+            <th>Transaction ID</th>
+                 <th>Total</th>
+               <th>Date</th>
+               <th>Items Purchased</th>
+           </tr>
+         </thead>
+      <tbody>
+           <tr>
+           <% @retailer.receipts.each do |receipt| %>
+             <td><%= receipt.id %></td>
+             <td> £<%= receipt.total_amount.round(2) %></td>
+             <td><%= receipt.created_at %></td>
+             <td><%= receipt.items %></td>
+           </tr>
+         </tbody>
+         <% end %>
+ </table>
+<br>
+  <button>
+  <%= link_to "Show Retailer", retailer_path(@retailer)   %> 
+ </button>

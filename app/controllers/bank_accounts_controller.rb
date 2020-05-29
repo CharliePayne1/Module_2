@@ -1,5 +1,5 @@
 class BankAccountsController < ApplicationController
-    before_action :set_bank_account, only: [:show, :edit, :update, :destroy]
+    before_action :set_bank_account, only: [:show, :edit, :update, :destroy, :show_all]
 
     def index
         @bank_accounts = BankAccount.all
@@ -29,6 +29,9 @@ class BankAccountsController < ApplicationController
     def destroy
         @bank_account.destroy
         redirect_to @bank_account.customer
+    end
+
+    def show_all
     end
 
     private 
