@@ -1,11 +1,12 @@
 class Customer < ApplicationRecord
-    has_many :bank_accounts
+    has_many :bank_accounts, dependent: :destroy
     has_many :retailers, through: :bank_accounts
     
     validates :first_name, presence: true
     validates :last_name, presence: true 
     validates :occupation, presence: true
     validates :age, numericality: { greater_than: 16 }
+    # validates :bank_accounts, presence: true
     
     
     # before_save :uppercase_name
@@ -46,5 +47,13 @@ class Customer < ApplicationRecord
     def my_sort_code
         self.bank_accounts.map {|ba| ba.sort_code}
     end 
+
+    #If a customer has no bank accounts, delete the customer
+    def no_account
+        if self.bank_accounts.blank?
+           self.destroy
+        end
+    end
+
     
 end
