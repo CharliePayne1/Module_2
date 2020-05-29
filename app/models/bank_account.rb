@@ -40,7 +40,9 @@ class BankAccount < ApplicationRecord
         else 
         @available = 0
         @available
+        end
     end
+
+    
 end
 
-end
