@@ -13,7 +13,6 @@ class BankAccountsController < ApplicationController
     end
 
     def create
-        
         @bank_account = BankAccount.create(bank_account_params)
         redirect_to @bank_account
     end
@@ -28,10 +27,11 @@ class BankAccountsController < ApplicationController
 
     def destroy
         @bank_account.destroy
-        # @bank_account.customer.no_account
-        #Where would we redirect to if we have deleted the customer
-        #if ...else ?
+        if @bank_account.customer.no_account
+            redirect_to bank_accounts_path
+        else
         redirect_to @bank_account.customer
+        end
     end
 
     def show_all

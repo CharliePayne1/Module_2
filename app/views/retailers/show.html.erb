@@ -16,7 +16,7 @@
 <div class="card-content grey lighten-4"><br>
   <div class="center-align"><strong><div id="Sector"><%= @retailer.sector %></div>
   <div id="AnnualTurnover">£<%= @retailer.annual_turnover %></div>
-    <div id="Established"><%= @retailer.established %></div>
+    <div id="Established"><%= link_to @retailer.established, "https://www.google.com/search?q=what+happened+in+#{@retailer.established}&rlz=1C5CHFA_enGB892GB893&oq=what+happened+in&aqs=chrome..69i57j69i59l3j0l4.6393j0j7&sourceid=chrome&ie=UTF-8" %></div>
     <div id="Employees"><%= @retailer.employees %></div><br>
     </div><strong></div>
 </div>

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    add_flash_types :error
     # before_action :define_customer, :authenticate
 
     # def authenticate

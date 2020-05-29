@@ -14,13 +14,22 @@ class ReceiptsController < ApplicationController
 
     def create
         @receipt = Receipt.create(receipt_params)
-        if @receipt.total_amount <= @receipt.bank_account.funds 
-           @receipt.bank_account.funds -= @receipt.total_amount
-        else 
+        if @receipt.sufficient_funds
+            if
+            @receipt.total_amount <= @receipt.bank_account.funds 
+            @receipt.bank_account.funds -= @receipt.total_amount
+            @bank.bank_account.funds
+            else
+            @receipt.bank_account.overdraft = ((@receipt.bank_account.overdraft + @receipt.bank_account.funds) - @receipt.total_amount)
             @receipt.bank_account.funds = 0
-            @receipt.bank_account.overdraft = @receipt.bank_account.overdraft + @receipt.bank_account.funds - @receipt.total_amount
+            @receipt.bank_account.overdraft
+            @receipt.bank_account.save
+            end
+            redirect_to @receipt
+        else
+            flash[:error] = "If you ain't got no money, take yo' broke a$$ home! - Fergie, 2006"
+            redirect_to @receipt.retailer
         end
-        redirect_to @receipt
     end
 
     def edit

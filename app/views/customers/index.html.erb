@@ -19,7 +19,11 @@
         </div>
         <div class="card-action">
         <%= link_to '<i class="material-icons right">create</i>Edit customer details'.html_safe, edit_customer_path(customer), class: "waves-effect waves-light btn-small blue darken-2" %>
-        <%= button_to "Delete Customer", customer_path(customer), method: :delete, class: "waves-effect waves-light btn-small blue darken-2" %>
+        <%
+=begin%>
+ <%= button_to "Delete Customer", customer_path(customer), method: :delete, class: "waves-effect waves-light btn-small blue darken-2" %> 
+<%
+=end%>
         </div>
       </div>
     </div>

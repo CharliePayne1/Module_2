@@ -8,7 +8,7 @@
 </ul>
 <nav>
   <div class="nav-wrapper #01579b light-blue darken-4">
- <a href="<%= root_path %>" class="brand-logo"><h5>Fund DMC</h5></a>
+ <%= link_to image_tag("logos/fund_dmc.png", alt: "logo"), '/', class: 'brand-logo' %>
     <ul class="right hide-on-med-and-down">
  <li><a href="<%= customers_path %>">All Customers</a></li>
     <li><a href="<%= bank_accounts_path %>">All Bank Accounts</a></li> 
